@@ -1,0 +1,48 @@
+<div class="home-avg-list">
+  {% for block in section.blocks %}
+    <div class="list-item">
+      <div class="item-avg">
+        {{ block.settings.svg }}
+      </div>
+      <div class="item-text">
+        {{ block.settings.text }}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "img-list",
+  "settings": [],
+  "blocks": [
+    {
+      "name": "svg",
+      "type": "html",
+      "settings": [
+        {
+          "type": "html",
+          "id": "svg",
+          "label": "svg"
+        },
+        {
+          "type": "html",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "svglist"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

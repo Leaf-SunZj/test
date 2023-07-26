@@ -4797,3 +4797,58 @@ $disclosure-list-large: 1100px;
   }
 }
 
+.home-avg-list{
+  display: flex;
+  justify-content: space-evenly;
+  margin:0 auto;
+  width:1000px;
+}
+.list-item{
+  width:200px;
+  height:105px;
+}
+.item-avg{
+  height:65px;
+  text-align:center;
+}
+.item-text{
+  text-align:center;
+  font-size:18px;
+  line-height:40px;
+}
+@media (max-width:1000px){ 
+  .home-avg-list{
+    width:100%;
+    
+  }
+  .list-item{
+    width:20%
+  }
+  .item-text{
+    text-align:center;
+    font-size:12px;
+    line-height:12px;
+  }
+  svg{
+    width:41px;
+    height:41px;
+  }
+}
+@media (max-width:500px){ 
+  .home-avg-list{
+    width:100%;
+    flex-wrap:wrap;
+  }
+  .list-item{
+    width:30%
+  }
+  .item-text{
+    text-align:center;
+    font-size:14px;
+    line-height:14px;
+  }
+  svg{
+    width:41px;
+    height:41px;
+  }
+}
