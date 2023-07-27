@@ -57,7 +57,7 @@
     background: {{ header_color }};
   }
 
-  .header-wrapper .site-nav__link:hover .burger-icon {
+  .header-wrapper .site-nav__link:hover .burger-icon {site-header
     background: {{ header_color | color_modify: 'alpha', 0.75 }};
   }
 
@@ -253,11 +253,29 @@
                         class="site-nav__link"
                         data-meganav-type="child"
                         {% unless request.page_type == 'index' %}{% if link.active %}aria-current="page"{% endif %}{% endunless%}>
-                          {{ link.title | escape }}
+                          {{ link.title | escape }}3
                       </a>
+                      {% if forloop.index==1 %}
+                        <div class="product_list">
+                          {% for block in section.blocks %}
+                            {% assign product = block.settings.product %}
+                            <div class="product-list-item">
+                              <img src="{{ product.featured_image.src | img_url}}">
+                              <div class="img_name">
+                                {{ block.settings.text }}
+                              </div>
+                              <div class="img_desc" style="color:#aeaeae;">
+                                {{ block.settings.desc }}
+                              </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                      {% endif%}
                     </li>
                   {% endif %}
                 {% endfor %}
+                {% comment %} <div>
+                </div> {% endcomment %}
 
                 {% comment %}
                   Remove comment tags below to add a search box to your header, visible on screens where your header menu
@@ -325,13 +343,82 @@
           </div>
 
         </div>
+        {% comment %} <div class="product_list">
+          {% for block in section.blocks %}
+            {% assign product = block.settings.product %}
+            <div class="product-list-item">
+              <img src="{{ product.featured_image.src | img_url}}">
+              <div class="img_name">
+                {{ block.settings.text }}
+              </div>
+              <div class="img_desc" style="color:#aeaeae;">
+                {{ block.settings.desc }}
+              </div>
+            </div>
+            {% endfor %}
+        </div> {% endcomment %}
       </header>
     </div>
   </div>
+  
 </div>
 
+<style>
+.product_list{
+  display:none;
+  z-index:5;
+  position:absolute;
+  bottom:-250px;
+  left:0;
+  justify-content: space-between;
+  width:100%;
+  background:white;
+  padding:30px 130px;
+  margin:0 auto; 
+}
+.product-list-item{
+  width:250px;
+  cursor: pointer;
+}
+.product-list-item img{
+width:250px;
+height:130px}
+.product-list-item .img_name{
+ font-family: Manrope;
+ font-size: 17px;
+ font-weight: 400;
+ line-height: 30px;
+ letter-spacing: 0em;
+ text-align: left;
+}
+.product-list-item .img_desc{
+  font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: left;
+}
 
-
+</style>
+<script>
+$(function(){
+  $(".site-nav--active").hover(function(){
+    $(this).css("color","#ee6c2c");
+    $(".product_list").css("display",'flex')
+  },function(){
+    $(this).css("color","black");
+    $(".product_list").css("display",'none')
+  })
+  {% comment %} $(".product_list").hover(function(){
+    $(".product_list").css("display",'flex')
+  },function(){
+    $(this).css("color","black");
+    $(".product_list").css("display",'none')
+  }) {% endcomment %}
+})
+</script>
+ 
 {% schema %}
 {
   "name": {
@@ -357,6 +444,30 @@
     "zh-CN": "标头",
     "zh-TW": "標頭"
   },
+  "blocks": [
+    {
+      "name": "product",
+      "type": "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "product"
+        },
+        {
+          "type": "html",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "html",
+          "id": "desc",
+          "label": "desc"
+        }
+
+      ]
+    }
+  ],
   "settings": [
     {
       "type": "image_picker",

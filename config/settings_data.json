@@ -1,13 +1,63 @@
 {
   "current": {
+    "type_header_family": "old_standard_tt_n4",
+    "type_accent_family": "avenir_next_n4",
+    "type_base_family": "avenir_next_n4",
     "checkout_accent_color": "#a26b25",
     "checkout_button_color": "#000000",
     "checkout_error_color": "#e32c2b",
     "sections": {
       "header": {
         "type": "header",
+        "blocks": {
+          "947a87a2-ff82-416d-a00f-59ff2be0b91e": {
+            "type": "product",
+            "settings": {
+              "product": "gift-card"
+            }
+          },
+          "1077bd5e-2359-49e5-a0ed-06c1f76943b3": {
+            "type": "product",
+            "settings": {
+              "product": "selling-plans-ski-wax"
+            }
+          },
+          "47b6d173-ef43-4fb5-8a9b-f6806d07da64": {
+            "type": "product",
+            "settings": {
+              "product": "the-3p-fulfilled-snowboard"
+            }
+          },
+          "b7e4b803-8665-44a2-a83f-506336a0355a": {
+            "type": "product",
+            "settings": {
+              "product": "the-collection-snowboard-hydrogen"
+            }
+          },
+          "a7d1c039-6eca-4056-91a5-3f98479e16d0": {
+            "type": "product",
+            "settings": {
+              "product": "the-collection-snowboard-liquid"
+            }
+          },
+          "165ffd71-de82-4012-b24f-836b691cbd92": {
+            "type": "product",
+            "settings": {
+              "product": "the-complete-snowboard"
+            }
+          }
+        },
+        "block_order": [
+          "947a87a2-ff82-416d-a00f-59ff2be0b91e",
+          "1077bd5e-2359-49e5-a0ed-06c1f76943b3",
+          "47b6d173-ef43-4fb5-8a9b-f6806d07da64",
+          "b7e4b803-8665-44a2-a83f-506336a0355a",
+          "a7d1c039-6eca-4056-91a5-3f98479e16d0",
+          "165ffd71-de82-4012-b24f-836b691cbd92"
+        ],
         "settings": {
-          "logo_max_width": 180,
+          "logo": "shopify:\/\/shop_images\/1.png",
+          "logo_max_width": 275,
           "header_color": "#000000",
           "transparent_header_enable": true,
           "transparent_header_color": "#ffffff",
@@ -17,9 +67,9 @@
           "drawer_search_enable": false,
           "show_announcement": true,
           "home_page_only": true,
-          "text": "Announce something here",
+          "text": "Free Shipping for Orders over $99",
           "link": "",
-          "color_bg": "#1c1d1d",
+          "color_bg": "#f06d21",
           "color_text": "#ffffff"
         }
       },
@@ -195,13 +245,6 @@
               "svg": "<svg width=\"56\" height=\"56\" viewbox=\"0 0 56 56\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<g clip-path=\"url(#clip0_2_1673)\">\n<path d=\"M39.8125 53.8125C39.8125 55.0208 38.8333 56 37.625 56H10.9375C6.11261 56 2.1875 52.0749 2.1875 47.25V22.9688C2.1875 21.7605 3.16675 20.7812 4.375 20.7812C5.58325 20.7812 6.5625 21.7605 6.5625 22.9688V47.25C6.5625 49.6622 8.52527 51.625 10.9375 51.625H37.625C38.8333 51.625 39.8125 52.6042 39.8125 53.8125ZM56 6.5625V13.125C56 14.3333 55.0208 15.3125 53.8125 15.3125V31.2812C53.8125 32.4895 52.8333 33.4688 51.625 33.4688C50.4167 33.4688 49.4375 32.4895 49.4375 31.2812V15.3125H2.1875C0.979248 15.3125 0 14.3333 0 13.125V6.5625C0 2.94373 2.94373 0 6.5625 0H49.4375C53.0563 0 56 2.94373 56 6.5625ZM4.375 10.9375H51.625V6.5625C51.625 5.35638 50.6436 4.375 49.4375 4.375H6.5625C5.35638 4.375 4.375 5.35638 4.375 6.5625V10.9375ZM32.8125 24.0625C34.0208 24.0625 35 23.0833 35 21.875C35 20.6667 34.0208 19.6875 32.8125 19.6875H22.9688C21.7605 19.6875 20.7812 20.6667 20.7812 21.875C20.7812 23.0833 21.7605 24.0625 22.9688 24.0625H32.8125ZM46.3203 36.6406H34.7821L37.5225 33.9306C38.3817 33.0808 38.3893 31.6957 37.5396 30.8369C36.6902 29.9781 35.3051 29.97 34.4463 30.8198L30.384 34.8368C29.3424 35.8669 28.7678 37.2388 28.7656 38.7C28.7635 40.1611 29.3343 41.5343 30.3729 42.5674L34.4416 46.6134C34.8688 47.0381 35.4264 47.25 35.9844 47.25C36.5462 47.25 37.108 47.0347 37.5357 46.6049C38.3876 45.7482 38.3834 44.3635 37.5267 43.5116L35.0171 41.0156H46.3203C49.2452 41.0156 51.625 43.3954 51.625 46.3203C51.625 49.2452 49.2726 51.625 46.381 51.625C45.1727 51.625 44.1935 52.6042 44.1935 53.8125C44.1935 55.0208 45.1727 56 46.381 56C48.9671 56 51.3904 54.99 53.2037 53.1562C55.0071 51.3328 56 48.9052 56 46.3203C56 40.9827 51.6579 36.6406 46.3203 36.6406Z\" fill=\"black\"><\/path>\n<\/g>\n<defs>\n<clippath id=\"clip0_2_1673\">\n<rect width=\"56\" height=\"56\" fill=\"white\"><\/rect>\n<\/clippath>\n<\/defs>\n<\/svg>",
               "text": "30-DAYS TRIAL"
             }
-          },
-          "938773b8-8676-43fe-8f9b-cf1570c79737": {
-            "type": "html",
-            "settings": {
-              "svg": "",
-              "text": ""
-            }
           }
         },
         "block_order": [
@@ -209,8 +252,7 @@
           "9fb0f147-510a-44f8-8441-900c52f13425",
           "5bcdc8ce-f3e2-4e25-b163-f6a0fa5be1c3",
           "772b8f5e-b609-4927-a10c-a2226b36fae3",
-          "e72b0d3c-5122-4164-aa70-3e2d3f82c174",
-          "938773b8-8676-43fe-8f9b-cf1570c79737"
+          "e72b0d3c-5122-4164-aa70-3e2d3f82c174"
         ],
         "settings": {}
       }
