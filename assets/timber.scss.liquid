@@ -522,12 +522,12 @@ body {
 }
 
 .wrapper {
-  max-width: 1750px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 ($gutter / 2);
+  // padding: 0 ($gutter / 2);
 
   @include at-query ($min, $postSmall) {
-    padding: 0 $gutter;
+    // padding: 0 $gutter;
   }
 }
 
@@ -873,18 +873,18 @@ $class-type: unquote(".");
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-left: -($gridGutter / 2);
+  // margin-left: -($gridGutter / 2);
 
   @include at-query($min, $postSmall) {
-    margin-left: -$gridGutter;
+    // margin-left: -$gridGutter;
   }
 }
 
 #{$class-type}grid__item {
   @include box-sizing();
-  float: left;
+  // float: left;
   min-height: 1px;
-  padding-left: $gridGutter / 2;
+  // padding-left: $gridGutter / 2;
   vertical-align: top;
 
   @if $mobile-first == true {
@@ -892,7 +892,7 @@ $class-type: unquote(".");
   }
 
   @include at-query($min, $postSmall) {
-    padding-left: $gridGutter;
+    // padding-left: $gridGutter;
   }
 }
 

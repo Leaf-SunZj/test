@@ -8,20 +8,59 @@
     {% endif %}
     {% if section.settings.blog_show_date %}
       <div class="featured-blog__date">
-        <time datetime="{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}" class="date">{{ article.published_at | date: format: 'date' }}</time>
+        <time datetime="{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}" class="date">
+          {{- article.published_at | date: format: 'date' -}}
+        </time>
       </div>
     {% endif %}
     <hr class="hr--small {% if section.settings.post_limit == 1 and section.settings.blog_show_image == false %}hr--middle{% else %}hr--left{% endif %}">
   </div>
 {% endif %}
-<h2 class="h3{% if section.settings.post_limit == 1 and section.settings.blog_show_image == false %} title--one-post{% endif %}">
+{% comment %} <h2 class="h3{% if section.settings.post_limit == 1 and section.settings.blog_show_image == false %} title--one-post{% endif %}">
   <a class="article__heading-link" href="{{ article.url }}">{{ article.title }}</a>
-</h2>
+</h2> {% endcomment %}
 {% if section.settings.blog_show_excerpt %}
   <div class="rte rte--indented-images">
     {{ article.excerpt_or_content | strip_html | truncatewords: 30 }}
+    <button class="btn-link">View More</button>
   </div>
 {% endif %}
 <p>
-  <a href="{{ article.url }}" class="text-link">{{ 'blogs.article.read_more' | t }} <span class="icon icon-arrow-right" aria-hidden="true"></span></a>
+  {% comment %} <a href="{{ article.url }}" class="text-link">
+    {{- 'blogs.article.read_more' | t }}
+    <span class="icon icon-arrow-right" aria-hidden="true"></span
+  ></a> {% endcomment %}
 </p>
+<style>
+  .featured-blog__post {
+    position: relative;
+  }
+  .rte--indented-images {
+    display:none;
+    position: absolute;
+    width:300px;
+    top: 40%;
+    left: 10%;
+    color:white;
+    font-family: Avenir LT 55 Roman;
+    font-size:1.46vw;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0em;
+    text-align: left;
+    opacity:0;
+    transition: all .5s;
+    transition-delay: .5s;
+    filter:brightness(100%);
+  }
+  .rte--indented-images .btn-link{
+    padding:2% 1vw;
+    width:auto;
+    font-weight:700;
+    color:white;
+    font-size:0.83vw;
+    border-radius:50px;
+    margin-top:20px;
+    border:1px solid #fff;
+  }
+</style>

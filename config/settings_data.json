@@ -1,6 +1,6 @@
 {
   "current": {
-    "type_header_family": "old_standard_tt_n4",
+    "type_header_family": "avenir_next_n4",
     "type_accent_family": "avenir_next_n4",
     "type_base_family": "avenir_next_n4",
     "checkout_accent_color": "#a26b25",
@@ -13,37 +13,49 @@
           "947a87a2-ff82-416d-a00f-59ff2be0b91e": {
             "type": "product",
             "settings": {
-              "product": "gift-card"
+              "product": "gift-card",
+              "text": "Smoke Alarm",
+              "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             }
           },
           "1077bd5e-2359-49e5-a0ed-06c1f76943b3": {
             "type": "product",
             "settings": {
-              "product": "selling-plans-ski-wax"
+              "product": "selling-plans-ski-wax",
+              "text": "Carbon Monoxide Alarm",
+              "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             }
           },
           "47b6d173-ef43-4fb5-8a9b-f6806d07da64": {
             "type": "product",
             "settings": {
-              "product": "the-3p-fulfilled-snowboard"
+              "product": "the-3p-fulfilled-snowboard",
+              "text": "Gas Alarm",
+              "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             }
           },
           "b7e4b803-8665-44a2-a83f-506336a0355a": {
             "type": "product",
             "settings": {
-              "product": "the-collection-snowboard-hydrogen"
+              "product": "the-collection-snowboard-hydrogen",
+              "text": "Cameras",
+              "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             }
           },
           "a7d1c039-6eca-4056-91a5-3f98479e16d0": {
             "type": "product",
             "settings": {
-              "product": "the-collection-snowboard-liquid"
+              "product": "the-collection-snowboard-liquid",
+              "text": "Smart Home Security System",
+              "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             }
           },
           "165ffd71-de82-4012-b24f-836b691cbd92": {
             "type": "product",
             "settings": {
-              "product": "the-complete-snowboard"
+              "product": "the-complete-snowboard",
+              "text": "Accessories",
+              "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             }
           }
         },
@@ -59,7 +71,7 @@
           "logo": "shopify:\/\/shop_images\/1.png",
           "logo_max_width": 275,
           "header_color": "#000000",
-          "transparent_header_enable": true,
+          "transparent_header_enable": false,
           "transparent_header_color": "#ffffff",
           "search": "modal",
           "main_menu_link_list": "main-menu",
@@ -255,9 +267,29 @@
           "e72b0d3c-5122-4164-aa70-3e2d3f82c174"
         ],
         "settings": {}
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "social_sharing_blog": true
+        }
+      },
+      "7684ef4c-cf05-4ec6-a69c-860dcaa2702c": {
+        "type": "featured-blog",
+        "settings": {
+          "title": "LATEST BLOG POST",
+          "blog": "news",
+          "post_limit": 4,
+          "blog_show_date": true,
+          "blog_show_author": false,
+          "blog_show_image": true,
+          "blog_show_excerpt": true,
+          "show_view_all": false
+        }
       }
     },
     "content_for_index": [
+      "7684ef4c-cf05-4ec6-a69c-860dcaa2702c",
       "slideshow",
       "featured-content",
       "featured-collections",
