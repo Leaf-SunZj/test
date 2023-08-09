@@ -131,7 +131,7 @@
                 </button>
               </div>
             </div>
-            <div class="grid__item large--one-third medium-down--one-half">
+            <div class="grid__item large--one-third medium-down--one-half header_logo"> 
               {% comment %}
                 Use the uploaded logo from theme settings if enabled.
                 Site name gets precedence with H1 tag on homepage, div on other pages.
@@ -224,6 +224,7 @@
                                         data-meganav-type="child"
                                         {% unless request.page_type == 'index' %}{% if grandchildlink.active %}aria-current="page"{% endif %}{% endunless %}
                                         tabindex="-1">
+                                        {% comment %} <img src="{{ grandchildlink.title | handle | append :".png "| img_url }}"> {% endcomment %}
                                           {{ grandchildlink.title | escape }}
                                         </a>
                                     </li>
@@ -239,7 +240,8 @@
                                 data-meganav-type="child"
                                 {% if childlink.active %}aria-current="page"{% endif %}
                                 tabindex="-1">
-                                  {{ childlink.title | escape }}
+                                <img src="{{ childlink.title | handle | append :".png "| file_url }}">
+                                <div class="title">{{ childlink.title | escape }}</div>
                               </a>
                             </li>
                           {% endif %}
@@ -253,7 +255,7 @@
                         class="site-nav__link"
                         data-meganav-type="child"
                         {% unless request.page_type == 'index' %}{% if link.active %}aria-current="page"{% endif %}{% endunless%}>
-                          {{ link.title | escape }}3
+                          {{ link.title | escape }}
                       </a>
                       {% if forloop.index==1 %}
                         <div class="product_list">
@@ -330,7 +332,7 @@
               <!-- //site-nav -->
             </nav>
             <div class="grid__item large--hide one-quarter">
-              <div class="site-nav--mobile text-right">
+              <div class="site-nav--mobile text-right ">
                 <a href="{{ routes.cart_url }}" class="site-nav__link cart-link js-drawer-open-button-right" aria-controls="CartDrawer">
                   <span class="icon-fallback-text">
                     <span class="icon icon-cart" aria-hidden="true"></span>
@@ -364,6 +366,24 @@
 </div>
 
 <style>
+  .grid--full .header_logo{
+       padding-left:6%;
+  }
+  .site-nav__item .site-nav__dropdown{
+  display:flex;
+  justify-content:space-between;
+  padding:45px 7%;
+}
+.site-nav__item .site-nav__dropdown li .title{
+  font-family: Manrope;
+font-size: 0.88vw;
+font-weight: 400;
+line-height: 30px;
+letter-spacing: 0em;
+text-align: left;
+font-style: normal;
+
+}
 .product_list{
   display:none;
   z-index:5;

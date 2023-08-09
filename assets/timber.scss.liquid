@@ -882,9 +882,9 @@ $class-type: unquote(".");
 
 #{$class-type}grid__item {
   @include box-sizing();
-  // float: left;
+  float: left;
   min-height: 1px;
-  // padding-left: $gridGutter / 2;
+  padding-left: $gridGutter / 2;
   vertical-align: top;
 
   @if $mobile-first == true {
@@ -892,7 +892,7 @@ $class-type: unquote(".");
   }
 
   @include at-query($min, $postSmall) {
-    // padding-left: $gridGutter;
+    padding-left: $gridGutter;
   }
 }
 

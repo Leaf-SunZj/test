@@ -20,9 +20,10 @@
     {%- assign first_media = true -%}
 
     <div class="grid product-single">
-      <div class="grid__item large--seven-twelfths medium--seven-twelfths text-center">
+      <div class="grid__item large--six-twelfths medium--seven-twelfths text-center">
         <div id="ProductMediaGroup-{{ section.id }}" class="product-single__media-group-wrapper" data-product-single-media-group-wrapper>
           <div class="product-single__media-group{% unless stacked %} product-single__media-group--single-xr{% endunless %}" data-product-single-media-group>
+            {% comment %} <div class="mainImg_slick"> {% endcomment %}
             {%- assign enable_image_zoom = section.settings.enable_image_zoom -%}
             {% assign height = 850 %}
             {% assign width = 575 %}
@@ -70,6 +71,7 @@
                 </div>
               </div>
             {%- endfor -%}
+            {% comment %} </div> {% endcomment %}
           </div>
 
           {% comment %}
@@ -83,33 +85,47 @@
 
           {% unless stacked %}
             <ul class="product-single__thumbnails small--hide grid-uniform" data-product-thumbnails>
-              {% for media in product.media %}
-                {% if product.media.size > 1 %}
-                  <li class="grid__item medium--one-third large--one-quarter product-single__media-wrapper">
-                    {%- capture thumbnail_alt -%}
-                      {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
-                        {{ 'products.product.video_thumbnail_alt' | t: imageAlt: media.alt | escape }}
-                      {%- elsif media.media_type == 'model' -%}
-                        {{ 'products.product.model_thumbnail_alt' | t: imageAlt: media.alt | escape }}
-                      {%- else -%}
-                        {{ 'products.product.gallery_thumbnail_alt' | t: imageAlt: media.alt | escape }}
-                      {%- endif -%}
-                    {%- endcapture -%}
-
-                    <a href="{{ media | img_url: 'grande' }}" class="product-single__thumbnail{% if media == featured_media %} active-thumb{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}" data-product-thumbnail>
-                      <img class="product-single__thumb" src="{{ media | img_url: '150x' }}" alt="{{ thumbnail_alt }}">
-                      {%- if media.media_type == 'video' or media.media_type == 'external_video' or media.media_type == 'model' -%}
-                        <div class="product-single__thumbnail-badge">
-                          {% include 'svg-definitions' with media.media_type %}
-                        </div>
-                      {%- endif -%}
-                    </a>
-                  </li>
-                {% endif %}
-              {% endfor %}
+              <div class="product_allimg_slick">
+                {% for media in product.media %}
+                  {% if product.media.size > 1 %}
+                    <li class="grid__item medium--one-third large--one-quarter product-single__media-wrapper">
+                      {%- capture thumbnail_alt -%}
+                        {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
+                          {{ 'products.product.video_thumbnail_alt' | t: imageAlt: media.alt | escape }}
+                        {%- elsif media.media_type == 'model' -%}
+                          {{ 'products.product.model_thumbnail_alt' | t: imageAlt: media.alt | escape }}
+                        {%- else -%}
+                          {{ 'products.product.gallery_thumbnail_alt' | t: imageAlt: media.alt | escape }}
+                        {%- endif -%}
+                      {%- endcapture -%}
+  
+                      <a data-index="{{forloop.index0}}" href="{{ media | img_url: 'grande' }}" class="product-single__thumbnail{% if media == featured_media %} active-thumb{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}" data-product-thumbnail>
+                        <img class="product-single__thumb" src="{{ media | img_url: '150x' }}" alt="{{ thumbnail_alt }}">
+                        {%- if media.media_type == 'video' or media.media_type == 'external_video' or media.media_type == 'model' -%}
+                          <div class="product-single__thumbnail-badge">
+                            {% include 'svg-definitions' with media.media_type %}
+                          </div>
+                        {%- endif -%}
+                      </a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <button class="product-prev  slick-arrow" aria-label="Previous">
+                <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5.99988 1.00024L1 6.00012L5.99988 11" stroke="#363636"/>
+                  <path d="M1 6.00012H22" stroke="#363636"/>
+                </svg>
+              </button>
+              <button class="product-next slick-arrow" aria-label="Next">
+                <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16.0001 10.9998L21 5.99988L16.0001 1" stroke="#363636"/>
+                  <path d="M21 5.9989H0" stroke="#363636"/>
+                </svg>
+              </button>
             </ul>
           {% endunless %}
-          <div class="slick__controls slick-slider">
+          {% comment %} <div class="slick__controls slick-slider">
             <button class="slick__arrow slick__arrow--previous" aria-label="{{ 'home_page.slideshow.previous_slide' | t }}" data-slick-previous>
               <span class="icon icon-slide-prev" aria-hidden="true"></span>
             </button>
@@ -118,7 +134,7 @@
             </button>
             <div class="slick__dots-wrapper" data-slick-dots>
             </div>
-          </div>
+          </div> {% endcomment %}
         </div>
       </div>
 
@@ -129,7 +145,7 @@
           {% endif %}
 
           <h1 class="product-single__title" itemprop="name">{{ product.title }}</h1>
-
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
           <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
             {% comment %}
               Optionally show the 'compare at' or original price of the product.
@@ -147,7 +163,7 @@
               </div>
             {%- endif -%}
 
-            <hr class="hr--small">
+            {% comment %} <hr class="hr--small"> {% endcomment %}
 
             <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
             <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
@@ -186,7 +202,9 @@
                             name="option{{ option.position }}"
                             class="single-option-selector__radio{% unless variant_label_state %} disabled{% endunless %}"
                             id="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
-                          <label for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}"{% unless variant_label_state %} class="disabled"{% endunless %}>{{ value | escape }}</label>
+                          <label for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}"{% unless variant_label_state %} class="disabled"{% endunless %} style="background-image:url({{ product.variants[forloop.index0].image.src | img_url :'100x'}});background-position:center center;background-size:70%;background-repeat:no-repeat;">
+                            {% comment %} {{ value | escape }} {% endcomment %}
+                          </label>
                         {% endfor %}
                       </fieldset>
                     {% else %}
@@ -243,7 +261,8 @@
           </div>
 
           <div class="product-single__description rte" itemprop="description">
-            {{ product.description }}
+            {% comment %} {{ product.description }} {% endcomment %}
+            {{ product.metafields.custom.bike_desc.value }}
           </div>
 
           {% if section.settings.social_sharing_products %}
@@ -253,16 +272,200 @@
       </div>
     </div>
 </div>
+<div class='product_navigation'>
+  <ul class="navigation_list">
+    <li link_to="overview">Overview</li>
+    <li link_to="specifications">Specifications</li>
+    <li link_to="reviews">Reviews</li>
+    <li link_to="faq">Faq</li>
+    <li link_to="download">Download</li>
+  </ul>
+</div>
+<div class="product_bg1" id="overview">
+  <div class="text">
+    <div class="title">Lorem ipsum</div>
+    <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod viverra viverra congue et purus nibh blandit nisl amet. </div>
+  </div>
+  <div class="bg"></div>
+</div>
+<div class="product_style">
+  <div class="title">Lorem ipsum</div>
+  <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod viverra viverra congue et purus nibh blandit nisl amet. </div>
+  <div class="product_style_img">
+    <img class="img_first lazyload"  data-src="https://cdn.shopify.com/s/files/1/0805/5170/6923/files/81dsDxFMqxL2_1.png?v=1691393273">
+    <img class="lazyload" data-src="https://cdn.shopify.com/s/files/1/0805/5170/6923/files/81dsDxFMqxL_2.png?v=1691393273">
+  </div>
+  <div class="product_icon_wrapper">
+    <div class="product_icon">
+    {{ product.metafields.custom.product_icon.value }}
+  </div>
+  </div>
+</div>
+<div class="img_wall">
+  {{ product.metafields.custom.img_wall.value }}
+</div>
+  <div class="img_list">
+    <div class="img_list_item">
+      <img src="https://cdn.shopify.com/s/files/1/0805/5170/6923/files/img_item1.png?v=1691458713">
+      <div class="title">Lorem ipsum</div>
+      <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod viverra viverra congue et purus nibh blandit nisl amet. </div>
+    </div>
+    <div class="img_list_item">
+      <img src="https://cdn.shopify.com/s/files/1/0805/5170/6923/files/img_item1.png?v=1691458713">
+      <div class="title">Lorem ipsum</div>
+      <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod viverra viverra congue et purus nibh blandit nisl amet. </div>
+    </div>
+    <div class="img_list_item">
+      <img src="https://cdn.shopify.com/s/files/1/0805/5170/6923/files/img_item1.png?v=1691458713">
+      <div class="title">Lorem ipsum</div>
+      <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod viverra viverra congue et purus nibh blandit nisl amet. </div>
+    </div>
+  </div>
+  <div class="specifications" id="specifications">
+    <div class="generic_title">
+      <span class="title_text">
+        Specifications
+        <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.30107 0C2.3273 0 0 2.2873 0 5.20997C0 7.11605 1.03435 8.768 2.58588 9.78458C3.74952 10.547 7.11118 11.9448 9.17989 15.2487C13.5759 22.4918 7.36977 29.4808 7.36977 29.4808C7.36977 29.4808 16.9375 21.3482 16.9375 13.0885C16.8082 4.70168 10.2143 0 5.30107 0Z" fill="#E8D999"/>
+          </svg>        
+      </span>
+    </div>
+    <div class="table">
+      {{ product.metafields.custom.table_list.value }}
+    </div>
+  </div>
+  <div class="product_reviews" id="reviews">
+    <div class="generic_title">
+      <span class="title_text">
+        Reviews
+        <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.30107 0C2.3273 0 0 2.2873 0 5.20997C0 7.11605 1.03435 8.768 2.58588 9.78458C3.74952 10.547 7.11118 11.9448 9.17989 15.2487C13.5759 22.4918 7.36977 29.4808 7.36977 29.4808C7.36977 29.4808 16.9375 21.3482 16.9375 13.0885C16.8082 4.70168 10.2143 0 5.30107 0Z" fill="#E8D999"/>
+          </svg>        
+      </span>
+    </div>
+    <div class="reviews_list">
+      <div class="reviews_num">
+        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+      </div>
+      <div class="reviews_grade">
+        <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+      </div>
+      <div class="reviews_img">
+        <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="product_fap" id="faq">
+    <div class="generic_title">
+      <span class="title_text">
+        Faq
+        <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.30107 0C2.3273 0 0 2.2873 0 5.20997C0 7.11605 1.03435 8.768 2.58588 9.78458C3.74952 10.547 7.11118 11.9448 9.17989 15.2487C13.5759 22.4918 7.36977 29.4808 7.36977 29.4808C7.36977 29.4808 16.9375 21.3482 16.9375 13.0885C16.8082 4.70168 10.2143 0 5.30107 0Z" fill="#E8D999"/>
+          </svg>        
+      </span>
+    </div>
+    <div class="product_fap_list">
+      <ul>
+        {{ product.metafields.custom.faq_list.value }}
+      </ul>
+    </div>
+  </div>
+  <div class="product_download" id="download">
+    <div class="generic_title">
+      <span class="title_text">
+        Download
+        <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.30107 0C2.3273 0 0 2.2873 0 5.20997C0 7.11605 1.03435 8.768 2.58588 9.78458C3.74952 10.547 7.11118 11.9448 9.17989 15.2487C13.5759 22.4918 7.36977 29.4808 7.36977 29.4808C7.36977 29.4808 16.9375 21.3482 16.9375 13.0885C16.8082 4.70168 10.2143 0 5.30107 0Z" fill="#E8D999"/>
+          </svg>        
+      </span>
+    </div>
+    <div class="link">
+      {{ product.metafields.custom.down_url.value }}
+    </div>
+  </div>
+
+<script>
+$(function(){
+  var navHeight=$(".product_navigation").offset().top
+  $(window).scroll(function(){
+    var scrollTop = $(window).scrollTop()
+    if(scrollTop >= navHeight) {
+      $(".product_navigation").addClass('fixed_top')
+    }else{
+      $(".product_navigation").removeClass('fixed_top')
+    }
+  })
+  $('.navigation_list').on('click','li',function(){
+    $(this).addClass('nav_active')
+    $(this).siblings('li').removeClass('nav_active')
+   var liname= $(this).attr('link_to')
+    $('html,body').animate({
+      scrollTop : $(`#${liname}`).offset().top-100
+    }, 500);
+  })
+  $('.product_fap  .product_fap_list ul li .question svg').click(function(){
+    $(this).siblings('svg').css('display','block')
+    $(this).css('display','none')
+    $(this).parent().siblings('p').toggle()
+  })
+})
+</script>
+<style>
+</style>
 {% unless product == empty %}
   <script type="application/json" id="ProductJson-{{ section.id }}">
     {{ product | json }}
-  </script>
+  </>
   <script type="application/json" id="ModelJson-{{ section.id }}">
     {{ product.media | where: 'media_type', 'model' | json }}
   </script>
 {% endunless %}
 
+<script>
+  $(function(){
+    var first_index=$(".active-thumb").attr('data-index');
+    console.log("ttt: "+first_index);
+    $('.product-single__media-group').slick({
+      speed: 500,
+      dots:true,
+      slidesToShow:1,
+      slidesToScroll: 1,
+      arrows:false,
+      infinite: false,
+      {% comment %} initialSlide:first_index,  {% endcomment %}
+      asNavFor: '.product_allimg_slick'
+      
+    })
 
+   $('.product_allimg_slick').slick({
+      dots: true,
+      infinite: false,
+      speed: 500,
+      slidesToShow:5,
+      adaptiveHeight: true,
+      arrows:false,
+      focusOnSelect:true,
+      {% comment %} initialSlide:first_index, {% endcomment %}
+      asNavFor: '.product-single__media-group'
+    })
+    {% comment %} $('.product-single__media-wrapper').click(function(){
+   console.log($(this).attr('data-slick-index'))
+   mainImg_slick.slick('slickGoTo',$(this).attr('data-slick-index')) 
+   }) {% endcomment %}
+
+    $('.product-prev').click(function () {
+      $('.product_allimg_slick').slick('slickPrev');
+    });
+    $('.product-next').click(function () {
+      $('.product_allimg_slick').slick('slickNext');
+    });
+    {% comment %} $(".single-option-radio input[type='radio']").click(function(){
+      console.log($(".active-thumb").parent().attr('data-slick-index'))
+  
+    }) {% endcomment %}
+    
+  })
+</script>
 
 {% schema %}
 {

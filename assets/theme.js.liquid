@@ -2989,12 +2989,12 @@ theme.Product = (function() {
     switchMedia: function(mediaId) {
       var $otherMedia = $(this.selectors.productMediaWrapper, this.$container);
 
-      $otherMedia.addClass(this.classes.hide);
+     // $otherMedia.addClass(this.classes.hide);
       var $newMedia = $(
         this.selectors.productMediaWrapper,
         this.$container
       ).filter('#ProductMediaWrapper-' + mediaId);
-      $newMedia.removeClass(this.classes.hide);
+      //$newMedia.removeClass(this.classes.hide);
     },
 
     productThumbnailSwitch: function() {
@@ -3048,8 +3048,10 @@ theme.Product = (function() {
           this.$container
         );
 
-        $productThumbnails.removeClass(this.classes.activeThumb);
-        $thumbnail.addClass(this.classes.activeThumb);
+        let index=$thumbnail.data('index');
+        $productThumbnails.parent().removeClass(this.classes.activeThumb);
+        $thumbnail.parent().addClass(this.classes.activeThumb);
+        $('.product_allimg_slick').slick('slickGoTo',index) ;
       }
     },
 
@@ -3242,8 +3244,8 @@ theme.Product = (function() {
               this.$container
             );
 
-            $newMedia.removeClass(this.classes.hide);
-            $otherMedia.addClass(this.classes.hide);
+            // $newMedia.removeClass(this.classes.hide);
+            // $otherMedia.addClass(this.classes.hide);
           }
         }
 

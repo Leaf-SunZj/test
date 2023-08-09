@@ -1,0 +1,167 @@
+<div class="product_list_wrapper">
+  <div class="product_list_item">
+    {% for block in section.blocks %}
+      <div class="item">
+        <img src="{{ block.settings.product.featured_image | img_url: 'master'}}">
+        <div class="text_wrapper">
+          <div class="title">{{ block.settings.product.title }}</div>
+          <div class="price">From {{ block.settings.product.price | money }} - Estimated End of July Shipping</div>
+          <div class="desc">{{ block.settings.product.metafields.custom.bike_desc.value }}</div>
+          <a href="{{ block.settings.product.url }}">
+            <button class="add-cart-btn">Add to Cart</button>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<style>
+  .product_list_wrapper {
+    background: #f2f2f2;
+  }
+  .product_list_wrapper .product_list_item {
+    max-width: 1293px;
+    width: 70%;
+    margin: auto;
+    padding: 101px 24px 71px;
+    display: flex;
+
+    justify-content: space-between;
+  }
+  .product_list_wrapper .product_list_item .item {
+    border-radius: 20px;
+    padding: 110px 70px 71px;
+    width: calc(50% - 26px);
+    background: white;
+    text-align: center;
+    transition: all 0.5s;
+  }
+  .product_list_wrapper .product_list_item .item:hover {
+    transform: translateY(-30px);
+    box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  }
+  .product_list_wrapper .product_list_item .item .text_wrapper {
+    margin-top: 143px;
+    text-align: left;
+  }
+  .product_list_wrapper .product_list_item .item .text_wrapper .title {
+    color: #000;
+    font-family: Avenir LT 55 Roman;
+    font-size: 30px;
+    margin-bottom: 9px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+  }
+  .product_list_wrapper .product_list_item .item .text_wrapper .price {
+    color: #000;
+    font-family: Avenir LT 55 Roman;
+    font-size: 18px;
+    margin-bottom: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 133.333% */
+  }
+  .product_list_wrapper .product_list_item .item .text_wrapper .desc {
+    color: #000;
+    font-family: Avenir LT 55 Roman;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+  }
+
+  .product_list_wrapper .product_list_item .item .text_wrapper .add-cart-btn {
+    width: 174.375px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #f26e0e;
+    color: white;
+  }
+  .product_list_wrapper .product_list_item .item .text_wrapper .add-cart-btn:hover {
+    background: #000;
+  }
+  @media (max-width: 1000px) {
+    .product_list_wrapper .product_list_item {
+      width: 100%;
+    }
+    .product_list_wrapper .product_list_item .item {
+      padding: 60px 30px 16px;
+      width: calc(50% - 13px);
+    }
+    .product_list_wrapper .product_list_item .item .text_wrapper {
+      margin-top: 77px;
+    }
+    .product_list_wrapper .product_list_item .item .text_wrapper .title {
+      color: #000;
+      font-family: Avenir LT 55 Roman;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 24px; /* 100% */
+    }
+    .product_list_wrapper .product_list_item .item .text_wrapper .price {
+      color: #000;
+      font-family: Avenir LT 55 Roman;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 16px; /* 114.286% */
+    }
+    .product_list_wrapper .product_list_item .item .text_wrapper .desc {
+      color: #000;
+      font-family: Avenir LT 55 Roman;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px; /* 200% */
+    }
+  }
+  @media (max-width: 600px) {
+    .product_list_wrapper .product_list_item {
+      flex-wrap: wrap;
+      padding: 56px 14px;
+      width: 100%;
+    }
+    .product_list_wrapper .product_list_item .item {
+      border-radius: 20px;
+      padding: 60px 27px 16px;
+      width: 100%;
+      background: white;
+      text-align: center;
+      transition: all 0.5s;
+      margin-bottom: 15px;
+    }
+  }
+</style>
+{% schema %}
+{
+  "name": "product-list",
+  "settings": [],
+  "blocks": [
+    {
+      "name": "product",
+      "type": "html",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "product-list"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

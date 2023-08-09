@@ -1,0 +1,292 @@
+#CollectionSection .banner {
+  width: 100%;
+  padding: 2.1vw 13.54vw;
+  display: flex;
+  justify-content: space-between;
+}
+#CollectionSection .banner .filter_view {
+  padding: 0 1.5vw;
+}
+#CollectionSection .banner .filter_view .filter .text {
+  color: #363636;
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+#CollectionSection .banner .filter_view .filter .close {
+  display: none
+}
+#CollectionSection .banner .filter_view .filter .clear {
+  color: #D2B951;
+  margin-left: 10px;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 55px;
+  text-decoration-line: underline;
+  text-transform: capitalize;
+}
+#CollectionSection .banner .filter_view .filter_item {
+  margin-top: 1vw;
+}
+#CollectionSection .banner .filter_view .filter_item .filter_title {
+  width: 280px;
+  height: 60px;
+  line-height: 60px;
+  color: #363636;
+  text-indent: 1em;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  background: #F9F9F9;
+}
+#CollectionSection .banner .filter_view .color_item .color_choose ul {
+
+  padding: 1.2vw 0;
+  display: flex;
+  justify-content: space-between;
+}
+#CollectionSection .banner .filter_view .color_item .color_choose ul a li {
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 60%;
+  background: #D2B951;
+  border: 1px solid #ccc;
+}
+#CollectionSection .banner .filter_view .size_item .size_choose {
+  padding: 1vw;
+}
+#CollectionSection .banner .filter_view .size_item .size_choose .size {
+  color: #666;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+}
+#CollectionSection .banner .grid-uniform {
+  padding-left: 3vw;
+}
+.grid-product__image-link {
+  background: white !important;
+}
+
+.grid-product__wrapper {
+  position: relative;
+  margin-bottom: 55px;
+}
+
+.grid-product__wrapper a {
+  text-align: left;
+}
+.grid-product__wrapper a .grid-product__title {
+  color: #363636;
+  font-family: Poppins;
+  font-size: 1vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.spr-badge {
+  padding: 0.42vw 0.27vw;
+}
+.spr-badge .spr-badge-starrating {
+  margin: 0 1.8vw 0 0 !important;
+}
+
+.grid-product__wrapper a .product_price {
+  padding: 0 0.27vw;
+}
+.grid-product__wrapper a .product_price .compare_price {
+  margin-right: 0.78vw;
+  color: #666;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: strikethrough;
+}
+.grid-product__wrapper a .product_price .really_price {
+  color: #363636;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  vertical-align: middle;
+}
+.grid-product__wrapper a .product_price .shop_cart {
+  float: right;
+  margin-right: 1vw;
+  position: relative;
+  display: inline-block;
+  width: 2.1vw;
+  height: 2.1vw;
+  flex-shrink: 0;
+  background: #E8D999;
+  border-radius: 50%;
+}
+.grid-product__wrapper a .product_price .shop_cart svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.grid-uniform .filter_mobile {
+  display: none;
+}
+.grid-uniform .sortSelect {
+  float: right;
+  margin-bottom: 5.5vw;
+}
+.grid-uniform .sortSelect .filter-dropdown__wrapper .filter-dropdown input,
+textarea,
+select {
+  background-color: white;
+  border: 0;
+}
+select:hover {
+  outline: none;
+}
+
+
+.grid-product__wrapper .tag_show {
+  position: absolute;
+  left: 0;
+  top: -1vw;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 60%;
+  background: #EECCD2;
+}
+.grid-product__wrapper .discount {
+  position: absolute;
+  top: -1vw;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 60%;
+  background: #DEE8EF;
+}
+@media(max-width: 500px) {
+  #CollectionSection .banner {
+    width: 100%;
+    padding: 0;
+  }
+  #CollectionSection .banner .grid-uniform {
+    width: 100%;
+    padding-left: 0;
+  }
+  .grid-uniform .grid__item {
+    padding: 0 2vw;
+    width: 50%;
+  }
+  .grid-product__wrapper .tag_show,
+  .grid-product__wrapper .discount {
+    display: none;
+  }
+  .spr-badge .spr-badge-caption {
+    display: none;
+  }
+  .grid-product__wrapper a .product_price .compare_price {
+    display: none;
+  }
+  .grid-product__wrapper a .product_price .shop_cart {
+    width: 35px;
+    height: 35px;
+  }
+  .grid-product__wrapper a .product_price .shop_cart svg {
+    width: 20px;
+    height: 20px;
+  }
+  .grid-product__sold-out {
+    display: none;
+  }
+  #CollectionSection .banner .grid-uniform .all_list .grid__item {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1px;
+  }
+  #CollectionSection .banner .grid-uniform .all_list .grid__item:nth-child(odd) {
+    border-right: 1px solid #ccc;
+  }
+  .grid-product__wrapper {
+    margin-bottom: 18px;
+  }
+  .grid-uniform .sortSelect {
+    float: none;
+    margin-left: 10%;
+  }
+  .grid-uniform .sortSelect .filter-dropdown__label {
+    display: none;
+  }
+  .grid-uniform .filter_mobile {
+    float: left;
+    padding: 2vw 4vw;
+    display: block;
+    color: #363636;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  #CollectionSection .banner {
+    position: relative;
+  }
+  #CollectionSection .banner .filter_view {
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    opacity: 1;
+    z-index: 4;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: all 0.4s;
+    transition-delay: 0s;
+
+  }
+  #CollectionSection .banner .filter_view .color_item .color_choose ul {
+    width: 75%;
+    padding: 2vw;
+    margin: 0;
+  }
+  .grid-product__wrapper a .grid-product__title {
+    display: inline-block;
+    font-size: 4.8vw;
+    padding: 0 2px;
+    text-indent: 0;
+    margin-bottom: 10px;
+  }
+  .grid-product__wrapper a .product_price .really_price {
+    font-size: 4.8vw;
+  }
+  .grid-product__meta {
+    padding: 13px 10px;
+  }
+  #CollectionSection .banner .filter_view .filter .close {
+    display: inline-block;
+    margin-left: 36%;
+    font-size: 7vw;
+  }
+  .filter-dropdown__wrapper .filter-dropdown select {
+    float: right;
+    color: #363636;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
