@@ -56,7 +56,7 @@ Example
             src="{{ featured_image.src | img_url: '1024x' }}"
             alt="{{ featured_image.alt | escape }}">
         {% else %}
-          {% include 'image-style' with image: featured_image, small_style: true, width: width, height: height, wrapper_id: img_wrapper_id, img_id_class: img_id_class %}
+          {% include 'image-style' with image, image: featured_image, small_style: true, width: width, height: height, wrapper_id: img_wrapper_id, img_id_class: img_id_class %}
           <div id="{{ img_wrapper_id }}" class="product--wrapper">
             <div style="padding-top:{{ 1 | divided_by: featured_image.aspect_ratio | times: 100 }}%;">
               <img
@@ -169,4 +169,17 @@ Example
 a{
 transform: translate(-50%,-50%);
 }
-</style> {% endcomment %}
+</style> {% endcomment %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'image-style' with image: featured_image, small_style: true, width:
+    width, height: height, wrapper_id: img_wrapper_id, img_id_class: img_id_class
+    %}"
+  to: "{% include 'image-style' with image, image: featured_image, small_style: true,
+    width: width, height: height, wrapper_id: img_wrapper_id, img_id_class: img_id_class
+    %}"
+  position: 2043..2209
+{%- endcomment -%}

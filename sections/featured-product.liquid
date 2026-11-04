@@ -63,7 +63,7 @@
               </div>
               {%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
               {%- if first_3d_model -%}
-                {%- include 'xr-button' with model_id: first_3d_model.id, multi: false -%}
+                {%- include 'xr-button' with model_id, model_id: first_3d_model.id, multi: false -%}
               {%- endif -%}
             {%- endunless -%}
           {% else %}
@@ -110,11 +110,11 @@
               </button>
             </div>
           {% else %}
-            {% capture "form_classes" %}
+            {% capture form_classes %}
               product-single__form{% if product.has_only_default_variant %} product-single__form--no-variants{% endif %}
             {%- endcapture %}
 
-            {% capture "form_id" %}AddToCartForm--{{ section.id }}{%- endcapture %}
+            {% capture form_id %}AddToCartForm--{{ section.id }}{%- endcapture %}
 
             {% form 'product', product, class:form_classes, id:form_id, data-product-form: '' %}
               {{ form | payment_terms }}
@@ -550,3 +550,20 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- include 'xr-button' with model_id: first_3d_model.id, multi: false -%}"
+  to: "{%- include 'xr-button' with model_id, model_id: first_3d_model.id, multi:
+    false -%}"
+  position: 3476..3560
+- from: '{% capture "form_classes" %}'
+  to: "{% capture form_classes %}"
+  position: 5545..5571
+- from: '{% capture "form_id" %}'
+  to: "{% capture form_id %}"
+  position: 5736..5757
+{% endcomment %}
