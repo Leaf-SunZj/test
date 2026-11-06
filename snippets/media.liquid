@@ -29,7 +29,7 @@ data-media-id="{{ media_id }}"
 tabindex="-1">
   {% case media.media_type %}
   {% when 'image' %}
-    {% include 'image-style' with image: media, width: width, height: height, small_style: true, wrapper_id: wrapper_id, img_id_class: img_id_class %}
+    {% include 'image-style' with image, image: media, width: width, height: height, small_style: true, wrapper_id: wrapper_id, img_id_class: img_id_class %}
     <div class="product-single__media" style="padding-top:{{ 1 | divided_by: media.aspect_ratio | times: 100}}%;">
       {% assign img_url = media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
       <img class="mfp-image lazyload {{ img_id_class }}"
@@ -64,3 +64,15 @@ tabindex="-1">
       alt="{{ media.alt | escape }}">
   </noscript>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'image-style' with image: media, width: width, height: height,
+    small_style: true, wrapper_id: wrapper_id, img_id_class: img_id_class %}"
+  to: "{% include 'image-style' with image, image: media, width: width, height: height,
+    small_style: true, wrapper_id: wrapper_id, img_id_class: img_id_class %}"
+  position: 1616..1769
+{% endcomment %}

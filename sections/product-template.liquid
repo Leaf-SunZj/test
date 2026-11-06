@@ -64,7 +64,7 @@
                     {%- endif -%}
 
                     {%- if xr_id -%}
-                      {%- include 'xr-button' with model_id: xr_id, multi: true -%}
+                      {%- include 'xr-button' with model_id, model_id: xr_id, multi: true -%}
                     {%- endif -%}
                     {%- assign first_media = false -%}
                   {% endif %}
@@ -80,7 +80,7 @@
             Thumbnail layout only (desktop)
           {% endcomment %}
           {%- if first_3d_model -%}
-           {%- include 'xr-button' with model_id: first_3d_model.id, multi: false -%}
+           {%- include 'xr-button' with model_id, model_id: first_3d_model.id, multi: false -%}
           {%- endif -%}
 
           {% unless stacked %}
@@ -168,11 +168,11 @@
             <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
             <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
 
-            {% capture "form_classes" %}
+            {% capture form_classes %}
               product-single__form{% if product.has_only_default_variant %} product-single__form--no-variants{% endif %}
             {%- endcapture %}
 
-            {% capture "form_id" %}AddToCartForm--{{ section.id }}{%- endcapture %}
+            {% capture form_id %}AddToCartForm--{{ section.id }}{%- endcapture %}
 
             {% form 'product', product, class:form_classes, id:form_id, data-product-form: '' %}
               {{ form | payment_terms }}
@@ -1030,3 +1030,23 @@ $(function(){
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- include 'xr-button' with model_id: xr_id, multi: true -%}"
+  to: "{%- include 'xr-button' with model_id, model_id: xr_id, multi: true -%}"
+  position: 3705..3776
+- from: "{%- include 'xr-button' with model_id: first_3d_model.id, multi: false -%}"
+  to: "{%- include 'xr-button' with model_id, model_id: first_3d_model.id, multi:
+    false -%}"
+  position: 4284..4368
+- from: '{% capture "form_classes" %}'
+  to: "{% capture form_classes %}"
+  position: 9393..9419
+- from: '{% capture "form_id" %}'
+  to: "{% capture form_id %}"
+  position: 9584..9605
+{% endcomment %}
